@@ -12,6 +12,11 @@ mkdir -p ~/.ssh
 echo "${RESTIC_SSH_KEY}" > ~/.ssh/restic_ssh_key
 chmod 400 ~/.ssh/restic_ssh_key
 
+# write ssh config
+echo "StrictHostKeyChecking=no" > ~/.ssh/config
+echo "ServerAliveInterval=60" >> ~/.ssh/config
+echo "ServerAliveCountMax=240" >> ~/.ssh/config
+
 # check repo
 restic snapshots &>/dev/null
 status=$?
