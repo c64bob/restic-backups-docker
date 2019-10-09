@@ -9,8 +9,8 @@ echo "Starting container..."
 
 # output ssh key as file
 mkdir -p ~/.ssh
-echo "${RESTIC_SSH_KEY}" > ~/.ssh/restic_ssh_key
-chmod 400 ~/.ssh/restic_ssh_key
+echo "${RESTIC_SSH_KEY}" > ~/.ssh/id_rsa
+chmod 400 ~/.ssh/id_rsa
 
 # write ssh config
 echo "StrictHostKeyChecking=no" > ~/.ssh/config
@@ -31,7 +31,7 @@ if [ $status != 0 ]; then
 
     if [ $init_status != 0 ]; then
         echo "Failed to init the repository: '${RESTIC_REPOSITORY}'"
-        exit 1
+        #exit 1
     fi
 fi
 
