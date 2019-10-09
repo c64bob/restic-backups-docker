@@ -15,10 +15,10 @@ Additionally you can see the the full log, including restic output, of the last 
 
 ## Environment variables
 
-* `RESTIC_REPOSITORY` - the location of the restic repository. Default `/mnt/restic`. For S3: `s3:https://s3.amazonaws.com/BUCKET_NAME`
-* `RESTIC_PASSWORD` - the password for the restic repository. Will also be used for restic init during first start when the repository is not initialized.
+* `RESTIC_REPOSITORY` - the location of the restic repository. Currently only sftp is supported.
+* `RESTIC_PASSWORD` - the password for the restic repository.
 * `RESTIC_TAG` - Optional. To tag the images created by the container.
-* `BACKUP_CRON` - A cron expression to run the backup. Note: cron daemon uses UTC time zone. Default: `0 */6 * * *` aka every 6 hours.
+* `BACKUP_CRON` - A cron expression to run the backup. Default: `0 */6 * * *` aka every 6 hours.
 * `RESTIC_FORGET_ARGS` - Optional. Only if specified `restic forget` is run with the given arguments after each backup. Example value: `-e "RESTIC_FORGET_ARGS=--prune --keep-last 10 --keep-hourly 24 --keep-daily 7 --keep-weekly 52 --keep-monthly 120 --keep-yearly 100"`
 * `RESTIC_JOB_ARGS` - Optional. Allows to specify extra arguments to the back up job such as limiting bandwith with `--limit-upload` or excluding file masks with `--exclude`.
 
@@ -34,7 +34,7 @@ Either by setting the [environment variable](https://docs.docker.com/engine/refe
 
 ## Backup via SFTP
 
-Since restic needs a **password less login** to the SFTP server make sure you can do `sftp user@host` from inside the container. If you can do so from your host system, the easiest way is to just mount your `.ssh` folder conaining the authorized cert into the container by specifying `-v ~/.ssh:/root/.ssh` as argument for `docker run`.
+Since restic needs a **passwordless login** to the SFTP server make sure you can do `sftp user@host` from inside the container. If you can do so from your host system, the easiest way is to just mount your `.ssh` folder conaining the authorized cert into the container by specifying `-v ~/.ssh:/root/.ssh` as argument for `docker run`.
 
 Now you can simply specify the restic repository to be an [SFTP repository](https://restic.readthedocs.io/en/stable/Manual/#create-an-sftp-repository).
 
