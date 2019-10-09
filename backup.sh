@@ -1,7 +1,6 @@
 #!/bin/sh
 
 lastLogfile="/var/log/backup-last.log"
-lastMailLogfile="/var/log/mail-last.log"
 
 copyErrorLog() {
   cp ${lastLogfile} /var/log/backup-error-last.log
@@ -12,7 +11,7 @@ logLast() {
 }
 
 start=`date +%s`
-rm -f ${lastLogfile} ${lastMailLogfile}
+rm -f ${lastLogfile}
 echo "Starting Backup at $(date +"%Y-%m-%d %H:%M:%S")"
 echo "Starting Backup at $(date)" >> ${lastLogfile}
 logLast "BACKUP_CRON: ${BACKUP_CRON}"
