@@ -7,13 +7,13 @@ RUN apk add --update tzdata
 RUN mkdir -p  /var/spool/cron/crontabs /var/log
       
 # define environment
-ENV RESTIC_REPOSITORY = ""
-ENV RESTIC_PASSWORD = ""
-ENV RESTIC_TAG = ""
-ENV BACKUP_CRON = "0 */6 * * *"
-ENV RESTIC_FORGET_ARGS = ""
-ENV RESTIC_JOB_ARGS = ""
-ENV TZ = ""
+ENV RESTIC_REPOSITORY=""
+ENV RESTIC_PASSWORD=""
+ENV RESTIC_TAG=""
+ENV BACKUP_CRON="0 */6 * * *"
+ENV RESTIC_FORGET_ARGS=""
+ENV RESTIC_JOB_ARGS=""
+ENV TZ=""
 
 # copy scripts and execute
 WORKDIR "/"
