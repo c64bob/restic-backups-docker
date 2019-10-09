@@ -2,8 +2,6 @@
 
 echo "Starting container ..."
 
-RESTIC_CMD=restic
-
 restic snapshots &>/dev/null
 status=$?
 echo "Check Repo status $status"
