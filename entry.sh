@@ -2,8 +2,10 @@
 
 echo "Starting container ..."
 
-# add ssh key
-ssh-add - <<< "${RESTIC_SSH_KEY}"
+# output ssh key as file
+mkdir -p ~/.ssh
+echo "${RESTIC_SSH_KEY}" > ~/.ssh/restic_ssh_key
+chmod 400 ~/.ssh/restic_ssh_key
 
 restic snapshots &>/dev/null
 status=$?
