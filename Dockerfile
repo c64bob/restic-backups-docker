@@ -9,6 +9,7 @@ RUN mkdir -p  /var/spool/cron/crontabs /var/log
 # define environment
 ENV RESTIC_REPOSITORY=""
 ENV RESTIC_PASSWORD=""
+ENV RESTIC_SSH_KEY=""
 ENV RESTIC_TAG=""
 ENV BACKUP_CRON="0 */6 * * *"
 ENV RESTIC_FORGET_ARGS=""
