@@ -1,12 +1,18 @@
 #!bin/sh
 
-echo "Starting container ..."
+echo "Starting container..."
+
+# test for mandatory environment variables
+[ -z "$RESTIC_REPOSITORY" ] && echo "RESTIC_REPOSITORY an not be empty. Exiting." && exit 1
+[ -z "$RESTIC_PASSWORD" ] && echo "RESTIC_PASSWORD can not be empty. Exiting." && exit 1
+[ -z "$RESTIC_SSH_KEY" ] && echo "RESTIC_SSH_KEY can not be empty. Exiting." && exit 1
 
 # output ssh key as file
 mkdir -p ~/.ssh
 echo "${RESTIC_SSH_KEY}" > ~/.ssh/restic_ssh_key
 chmod 400 ~/.ssh/restic_ssh_key
 
+# check repo
 restic snapshots &>/dev/null
 status=$?
 echo "Check Repo status $status"
