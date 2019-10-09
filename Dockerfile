@@ -19,5 +19,6 @@ ENV TZ = ""
 WORKDIR "/"
 COPY backup.sh /bin/backup
 COPY entry.sh /entry.sh
+RUN chmod +x /bin/backup /entry.sh
 ENTRYPOINT ["/entry.sh"]
 CMD ["tail","-fn0","/var/log/cron.log"]
