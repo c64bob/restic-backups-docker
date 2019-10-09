@@ -1,11 +1,7 @@
 FROM restic/restic:latest
 
-
-# set timezone
-
+# make it possible to set timezone
 RUN apk add --update tzdata
-
-
 
 # setup cron
 RUN mkdir -p  /var/spool/cron/crontabs /var/log
@@ -18,9 +14,6 @@ ENV BACKUP_CRON = "0 */6 * * *"
 ENV RESTIC_FORGET_ARGS
 ENV RESTIC_JOB_ARGS
 ENV TZ
-
-
-
         
 # everything in /data will be backed up
 VOLUME /data
