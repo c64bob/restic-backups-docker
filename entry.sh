@@ -2,6 +2,9 @@
 
 echo "Starting container ..."
 
+# add ssh key
+ssh-add - <<< "${RESTIC_SSH_KEY}"
+
 restic snapshots &>/dev/null
 status=$?
 echo "Check Repo status $status"
