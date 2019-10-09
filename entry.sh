@@ -31,7 +31,7 @@ if [ $status != 0 ]; then
 
     if [ $init_status != 0 ]; then
         echo "Failed to init the repository: '${RESTIC_REPOSITORY}'"
-        #exit 1
+        exit 1
     fi
 fi
 
