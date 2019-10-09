@@ -1,7 +1,7 @@
 FROM restic/restic:latest
 
 # make it possible to set timezone
-RUN apk add --update tzdata
+RUN apk add --update --no-cache tzdata
 
 # setup cron
 RUN mkdir -p  /var/spool/cron/crontabs /var/log
