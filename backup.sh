@@ -25,7 +25,8 @@ restic backup /data ${RESTIC_JOB_ARGS} --tag=${RESTIC_TAG?"Missing environment v
 rc=$?
 logLast "Finished backup at $(date)"
 if [[ $rc == 0 ]]; then
-    echo "Backup Successfull" 
+    echo "Backup Successfull"
+    [ -n "$HEALTHCHECK_URL" ] && wget -s "$HEALTHCHECK_URL"
 else
     echo "Backup Failed with Status ${rc}"
     restic unlock
