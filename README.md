@@ -17,10 +17,13 @@ Additionally you can see the the full log, including restic output, of the last 
 
 * `RESTIC_REPOSITORY` - the location of the restic repository. Currently only sftp is supported.
 * `RESTIC_PASSWORD` - the password for the restic repository.
+* `RESTIC_SSH_KEY` - private key for passwordless ssh authentication.
 * `RESTIC_TAG` - Optional. To tag the images created by the container.
-* `BACKUP_CRON` - A cron expression to run the backup. Default: `0 */6 * * *` aka every 6 hours.
 * `RESTIC_FORGET_ARGS` - Optional. Only if specified `restic forget` is run with the given arguments after each backup. Example value: `-e "RESTIC_FORGET_ARGS=--prune --keep-last 10 --keep-hourly 24 --keep-daily 7 --keep-weekly 52 --keep-monthly 120 --keep-yearly 100"`
 * `RESTIC_JOB_ARGS` - Optional. Allows to specify extra arguments to the back up job such as limiting bandwith with `--limit-upload` or excluding file masks with `--exclude`.
+* `BACKUP_CRON` - A cron expression to run the backup. Default: `0 */6 * * *` aka every 6 hours.
+* `TZ` - Optional. Set a custom timezone.
+* `HEALTHCHECK_URL` - Optional. Set a URL to call after successful backups. For a service like https://healthchecks.io/
 
 ## Volumes
 
@@ -29,8 +32,6 @@ Additionally you can see the the full log, including restic output, of the last 
 ## Set the hostname
 
 Since restic saves the hostname with each snapshot and the hostname of a docker container is derived from it's id you might want to customize this by setting the hostname of the container to another value.
-
-Either by setting the [environment variable](https://docs.docker.com/engine/reference/run/#env-environment-variables) `HOSTNAME` or with `--hostname` in the [network settings](https://docs.docker.com/engine/reference/run/#network-settings)
 
 ## Backup via SFTP
 
