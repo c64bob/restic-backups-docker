@@ -26,7 +26,7 @@ rc=$?
 logLast "Finished backup at $(date)"
 if [[ $rc == 0 ]]; then
     echo "Backup Successfull"
-    [ -n "$HEALTHCHECK_URL" ] && wget -s "$HEALTHCHECK_URL"
+    [ -n "$HEALTHCHECK_URL" ] && wget -O /dev/null -q "$HEALTHCHECK_URL"
 else
     echo "Backup Failed with Status ${rc}"
     restic unlock
