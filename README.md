@@ -24,6 +24,7 @@ Additionally you can see the the full log, including restic output, of the last 
 * `BACKUP_CRON` - A cron expression to run the backup. Default: `0 */6 * * *` aka every 6 hours.
 * `TZ` - Optional. Set a custom timezone.
 * `HEALTHCHECK_URL` - Optional. Set a URL to call after successful backups. For a service like https://healthchecks.io/
+* `API_TOTAL_SIZE` - Optional. Set a URL to post repo total size after successful backups. For REST APIs.
 
 ## Volumes
 
