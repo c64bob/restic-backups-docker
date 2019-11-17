@@ -16,6 +16,7 @@ ENV RESTIC_JOB_ARGS=""
 ENV BACKUP_CRON="0 */6 * * *"
 ENV TZ=""
 ENV HEALTHCHECK_URL=""
+ENV API_TOTAL_SIZE=""
 
 # copy scripts and execute
 WORKDIR "/"
