@@ -49,11 +49,11 @@ if [ -n "${RESTIC_FORGET_ARGS}" ]; then
 fi
 
 # send total size of repo to API, if specified
-if [ -n "${API_TOTAL_SIZE}" ]; then
-    total_size=$( restic stats --mode=raw-data --json | jq '.total_size' ) 
-    current_date=$( date +"%Y-%m-%d" )
+if [ -n "${API_TOTAL_SIZE}" ]; then           
+    total_size=$( restic stats --mode=raw-data --json | jq '.total_size' )
+    current_date=$( date +"%Y-%m-%d" )                                             
     payload="{\"date\": \"$current_date\", \"size\": \"$total_size\"}"
-    curl --silent --header "Content-Type: application/json" --data "$payload" "$API_TOTAL_SIZE"
+    curl --header "Content-Type: application/json" --data "$payload" "$API_TOTAL_SIZE"
 fi
 
 end=`date +%s`
