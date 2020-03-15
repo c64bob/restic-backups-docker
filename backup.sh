@@ -53,7 +53,7 @@ if [ -n "${API_TOTAL_SIZE}" ]; then
     total_size=$( restic stats --mode=raw-data --json | jq '.total_size' )
     current_date=$( date +"%Y-%m-%d" )                                             
     payload="{\"date\": \"$current_date\", \"size\": \"$total_size\"}"
-    curl --header "Content-Type: application/json" --data "$payload" "$API_TOTAL_SIZE"
+    curl --silent --header "Content-Type: application/json" --data "$payload" "$API_TOTAL_SIZE"
 fi
 
 end=`date +%s`
