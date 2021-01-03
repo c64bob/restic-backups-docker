@@ -18,6 +18,9 @@ ENV TZ=""
 ENV HEALTHCHECK_URL=""
 ENV API_TOTAL_SIZE=""
 
+# define healthcheck
+HEALTHCHECK CMD restic version || exit 1
+
 # copy scripts and execute
 WORKDIR "/"
 COPY backup.sh /bin/backup
